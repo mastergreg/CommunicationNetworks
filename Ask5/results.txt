@@ -1,0 +1,65 @@
+Packet Size		: 64 Bytes
+Total Data received	: 705856 Bytes
+Total Packets received	: 11029
+Average Delay		: 0.000379 sec
+
+Packet Size		: 128 Bytes
+Total Data received	: 830080 Bytes
+Total Packets received	: 6485
+Average Delay		: 0.000583 sec
+
+Packet Size		: 256 Bytes
+Total Data received	: 959744 Bytes
+Total Packets received	: 3749
+Average Delay		: 0.001005 sec
+
+Packet Size		: 384 Bytes
+Total Data received	: 1001856 Bytes
+Total Packets received	: 2609
+Average Delay		: 0.001236 sec
+
+Packet Size		: 512 Bytes
+Total Data received	: 1063424 Bytes
+Total Packets received	: 2077
+Average Delay		: 0.001536 sec
+
+Packet Size		: 640 Bytes
+Total Data received	: 1070080 Bytes
+Total Packets received	: 1672
+Average Delay		: 0.002203 sec
+
+Packet Size		: 768 Bytes
+Total Data received	: 1114368 Bytes
+Total Packets received	: 1451
+Average Delay		: 0.001962 sec
+
+Packet Size		: 896 Bytes
+Total Data received	: 1146880 Bytes
+Total Packets received	: 1280
+Average Delay		: 0.001995 sec
+
+Packet Size		: 1024 Bytes
+Total Data received	: 1161216 Bytes
+Total Packets received	: 1134
+Average Delay		: 0.002174 sec
+
+Packet Size		: 1152 Bytes
+Total Data received	: 1138176 Bytes
+Total Packets received	: 988
+Average Delay		: 0.002332 sec
+
+Packet Size		: 1280 Bytes
+Total Data received	: 1178880 Bytes
+Total Packets received	: 921
+Average Delay		: 0.002347 sec
+
+Packet Size		: 1408 Bytes
+Total Data received	: 1178496 Bytes
+Total Packets received	: 837
+Average Delay		: 0.002145 sec
+
+Packet Size		: 1500 Bytes
+Total Data received	: 1176000 Bytes
+Total Packets received	: 784
+Average Delay		: 0.002834 sec
+

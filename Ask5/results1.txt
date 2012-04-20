@@ -1,0 +1,17 @@
+#5 seconds simulation
+
+Number of nodes		: 6
+Total Data received	: 5812224 Bytes
+Total Packets received	: 5676
+Average Delay		: 0.001882 sec
+
+Number of nodes		: 20
+Total Data received	: 5811200 Bytes
+Total Packets received	: 5675
+Average Delay		: 0.003089 sec
+
+Number of nodes 	: 40
+Total Data received	: 5741568 Bytes
+Total Packets received	: 5607
+Average Delay		: 0.006017 sec
+
