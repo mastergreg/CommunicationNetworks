@@ -27,8 +27,8 @@
 \include{title/title}
 \section{Ερωτήσεις}
 \begin{itemize}
-    \item Ο ρυθμός αποστολής είναι $1.2*10^6 bps \simeq 1.2 Mbps$.
-    \item Συνολικά μεταφέρθηκαν $1.2*10^6 bytes = 9.6*10^6 bits$ από την αρχή
+    \item Ο ρυθμός αποστολής είναι $1.2\times10^6 bps$.
+    \item Συνολικά μεταφέρθηκαν $1.2\times10^6 bytes = 9.6*10^6 bits$ από την αρχή
         ως το τέλος της προσομοίωσης.
     \item Στη γραμμή κάθε στιγμή βρίσκονται 1500 bytes όσο και το μέγεθος του
         κάθε πακέτου.
@@ -36,6 +36,23 @@
             \centering
             \includegraphics[width=0.5\textwidth]{files/1packet.png}
         \end{figure}
+    \item Στη γραμμή κάθε στιγμή βρίσκονται $2\times1500$ bytes όσο και το μέγεθος του
+        2 πακέτων.
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\textwidth]{files/2packet.png}
+        \end{figure}
+    \item Κάθε πακέτο φέρει δεδομένα μεγέθους 1460 bytes συνεπώς
+        $1460\times100 = 146000$ bytes/sec $\times 8 = 1168000$ bps
+    \item Για να πετύχουμε ροή δεδομένων
+        $1.2Mbps=1.2\times2^{20}bps=1.2\times2^{17}bytes$ πρέπει να στέλνουμε
+        $1.2\times2^{17}\div1460$ πακέτα/sec συνεπώς πρέπει ο ρυθμός αποστολής
+        να αυξηθεί, δηλαδή να μειωθεί το interval πράγμα που το πετυχαίνουμε
+        με την ακόλουθη εντολή:
+\begin{minted}{tcl}
+$cbr0 set interval_ 0.0092
+\end{minted}
+
 \end{itemize}
 
 \end{document}
