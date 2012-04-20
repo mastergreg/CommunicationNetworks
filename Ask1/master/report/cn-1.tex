@@ -1,0 +1,42 @@
+%{{{ preamble
+\documentclass[a4paper,9pt]{article}
+\usepackage{anysize}
+\marginsize{2cm}{2cm}{1cm}{1cm}
+%\textwidth 6.0in \textheight = 664pt
+\usepackage{xltxtra}
+\usepackage{xunicode}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{xgreek}
+\usepackage{fancyvrb}
+\usepackage{minted}
+\usepackage{listings}
+\usepackage{enumitem} 
+\usepackage{framed} 
+\usepackage{relsize}
+\usepackage{float} 
+\usepackage{pstricks}
+\usepackage{pst-node}
+\usepackage{pst-blur}
+\setmainfont[Mapping=tex-text]{FreeSerif}
+%}}}
+\begin{document}
+
+\def\thesection {\Roman{section}.}
+
+\include{title/title}
+\section{Ερωτήσεις}
+\begin{itemize}
+    \item Ο ρυθμός αποστολής είναι $1.2*10^6 bps \simeq 1.2 Mbps$.
+    \item Συνολικά μεταφέρθηκαν $1.2*10^6 bytes = 9.6*10^6 bits$ από την αρχή
+        ως το τέλος της προσομοίωσης.
+    \item Στη γραμμή κάθε στιγμή βρίσκονται 1500 bytes όσο και το μέγεθος του
+        κάθε πακέτου.
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\textwidth]{files/1packet.png}
+        \end{figure}
+\end{itemize}
+
+\end{document}
+
