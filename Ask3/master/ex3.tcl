@@ -1,6 +1,8 @@
 set ns [new Simulator]
 $ns rtproto DV
 set nf [open out.nam w]
+set f0 [open ex3_4a1.tr w]
+set f1 [open ex3_4a2.tr w]
 $ns namtrace-all $nf
 
 for {set i 0} {$i < 9} {incr i} {
@@ -48,31 +50,51 @@ set cbr5 [new Application/Traffic/CBR]
 $cbr5 set packetSize_ 1500
 $cbr5 set interval_ 0.01
 $cbr5 attach-agent $udp5
-set cbr7 [new Application/Traffic/CBR]
-$cbr7 set packetSize_ 1500
-$cbr7 set interval_ 0.01
+set exp7 [new Application/Traffic/Exponential]
+$exp7 set packetSize_ 1500
+$exp7 set rate_ 1200k
 
 
-$cbr7 attach-agent $udp7
+$exp7 attach-agent $udp7
 
 
 
 
 proc finish {} {
-    global ns nf
+    global ns nf f0 f1
     $ns flush-trace
     close $nf
+    close $f0
+    close $f1
     exit 0
+}
+proc record {} {
+      global sink5 sink7 f0 f1
+      set ns [Simulator instance]
+# Ορισμός της χρονικής περιόδου που θα ξανακληθεί η διαδικασία
+      set time 0.01
+# Καταγραφή των bytes
+      set bw5 [$sink5 set bytes_]
+      set bw7 [$sink7 set bytes_]
+# Ορισμός του χρόνου της τρέχουσας καταγραφής
+      set now [$ns now]
+# Υπολογισμός του bandwidth και καταγραφή αυτού στο αρχείο
+      puts $f0 "$now [expr (($bw5/$time)*8)/1000000]"
+      puts $f1 "$now [expr (($bw7/$time)*8)/1000000]"
+# Κάνει την μεταβλητή bytes 0
+      $sink5 set bytes_ 0
+      $sink7 set bytes_ 0
+# Επαναπρογραμματισμός της διαδικασίας
+      $ns at [expr $now+$time] "record"
 }
 
 
 
+$ns at 0 "record"
 $ns at 0.5 "$cbr5 start"
-$ns at 1 "$cbr7 start"
-$ns rtmodel-at 1.2 down $n(1) $n(2)
-$ns rtmodel-at 1.6 up   $n(1) $n(2)
-$ns at 2 "$cbr5 stop"
-$ns at 2.5 "$cbr7 stop"
-$ns at 3 "finish"
+$ns at 1 "$exp7 start"
+$ns at 14 "$cbr5 stop"
+$ns at 14.5 "$exp7 stop"
+$ns at 15 "finish"
 
 $ns run

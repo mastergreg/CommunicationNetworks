@@ -30,7 +30,7 @@
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\textwidth]{files/1.png}
+    \includegraphics[width=0.8\textwidth]{files/1.png}
 \end{figure}
 
 Τρέχουμε το animation και παρατηρούμε την εξέλιξη της πορείας μετάδοσης των
@@ -49,7 +49,7 @@
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\textwidth]{files/2.png}
+    \includegraphics[width=0.8\textwidth]{files/2.png}
 \end{figure}
 
 Τα πακετα ακολουθουν τη διαδρομή (5 -> 1 ->  2 -> 7)
@@ -59,30 +59,30 @@
 ίσο και σταθερό.
 
 
-\inputminted[fontsize=\scriptsize]{tcl}{files/ex3_1.tcl}
+\inputminted[fontsize=\footnotesize]{tcl}{files/ex3_1.tcl}
 \section{}
 Σε αυτήν ενότητα θα δούμε τη διαφορά μεταξύ στατικής και δυναμικής
 δρομολόγησης και την εκάστοτε αντιμετώπιση από το δίκτυο. Μεταβάλλουμε λίγο
 τον κώδικα, διακόπτοντας την σύνδεση ανάμεσα σε 1 και 2 για 0.4sec.
 
-\inputminted[fontsize=\scriptsize]{tcl}{files/ex3_2.tcl}
+\inputminted[fontsize=\footnotesize]{tcl}{files/ex3_2.tcl}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\textwidth]{files/3.png}
+    \includegraphics[width=0.8\textwidth]{files/3.png}
     \caption{Για χρόνο 1.2sec η σύνδεση διακόπτεται στη ζεύξη 1-2.}
 \end{figure}
 
 
 Προκειμένου να διορθώσουμε το παραπάνω πρόβλημα, αλλάζουμε τη σύνδεση σε
 δυναμική με την ακόλουθη εντολή:
-%$ns rtproto DV
+\$ns rtproto DV
 
 Παρατηρούμε ορισμένες αλλαγές σε σχέση με πριν. Αρχικά, εξετάζεται με
 δοκιμαστικά πακέτα η συνδεσιμότητα των γραμμών:
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\textwidth]{files/4.png}
+    \includegraphics[width=0.8\textwidth]{files/4.png}
 \end{figure}
 
 Μετά τη διακοπή της σύνδεσης 1-2 επιλέγεται εναλλακτική διαδρομή, όταν
@@ -90,7 +90,7 @@
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\textwidth]{files/5.png}
+    \includegraphics[width=0.8\textwidth]{files/5.png}
 \end{figure}
 
 Τέλος, μόλις η σύνδεση ενεργοποιηθεί ξανά, αρχίζει και πάλι η μετάδοση πακέτων
@@ -99,7 +99,7 @@
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\textwidth]{files/6.png}
+    \includegraphics[width=0.8\textwidth]{files/6.png}
 \end{figure}
 
 \begin{itemize}
@@ -157,7 +157,7 @@
 Σε αυτό το κομμάτι της άσκησης αλλάζουμε το κόστος των διαδρομών όπως φαίνεται
 στον κώδικα παρακάτω.
 
-\inputminted[fontsize=\scriptsize]{tcl}{files/ex3_3.tcl}
+\inputminted[fontsize=\footnotesize]{tcl}{files/ex3_3.tcl}
 
 Εκτελώντας την προσομοίωση και πάλι παρατηρούμε ότι πλέον όταν κόβεται η ζεύξη
 1-2 επιλέγεται διαφορετική πορεία από πριν. Καθώς  αυτή τη φορά
@@ -165,13 +165,8 @@
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\textwidth]{files/8.png}
+    \includegraphics[width=0.8\textwidth]{files/8.png}
 \end{figure}
-
-
-
-
-
 
 \begin{itemize}
     \item Ποιές διαδρομές ακολουθούν τα πακέτα πριν , μετά και κατά τη διάρκεια της
@@ -192,6 +187,42 @@
         Προφανώς θα μπορούσαν να δρομολογηθούν από άλλους κόμβους τα πακέτα (βλ. Μέσω
         του κόμβου 8) αλλά αυτό θα ήταν ακριβότερο γι’αυτό επιλέγεται η παραπάνω
         διαδρομή.
+\end{itemize}
+
+
+
+\section{}
+
+
+Προσθέτουμε τις κατάλληλες εντολές και ο τελικός κώδικας διαμορφώνεται όπως
+φαίνεται παρακάτω. Σβήνουμε τις εντολές που προκαλούν τη διακοπή της σύνδεσης
+όταν t=1.2sec  και την αποκατάστασή της όταν t=1.6sec ώστε να μην υπάρχουν
+προβλήματα στη ροή δεδομένων. Ακόμη ρυθμίζουμε το χρόνο προσομοίωσης στα 15sec
+ώστε να έχουμε αντιπροσωπευτικά αποτελέσματα.
+
+\subsection{CBR}
+\inputminted[fontsize=\footnotesize]{tcl}{files/ex3_4a1.tcl}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{files/graph1.png}
+\end{figure}
+
+\subsection{Exponential}
+\inputminted[fontsize=\footnotesize]{tcl}{files/ex3_4a2.tcl}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{files/graph2.png}
+\end{figure}
+
+\begin{itemize}
+\item Ποιός είναι ο μέγιστος αριθμός μετάδοσης που επιτυχγάνεται για τις δύο
+περιπτώσεις κίνησης, με βάση τις γραφικές παραστάσεις που σχεδιάσατε;
+Ο μέγιστος ρυθμός μετάδοσης είναι και για τις δύο περιπτώσεις κίνησης 0.18.
+\item Αιτολογήστε τις τιμές που θέσατε παραπάνω για τις δύο τιμές κίνησης (cbr
+και exp);
+H παραπάνω τιμή είναι λογική αφού είναι ελαφρώς μικρότερη από το εύρος ζώνης
+της σύνδεσης (δηλ 2Mb).
 \end{itemize}
 
 
