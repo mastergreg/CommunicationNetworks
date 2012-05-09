@@ -28,7 +28,7 @@
 
 \section{}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{files/1.png}
 \end{figure}
@@ -47,7 +47,7 @@
         όλη εφαρμογή, μέσα από τη διαδικασία finish.
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{files/2.png}
 \end{figure}
@@ -67,7 +67,7 @@
 
 \inputminted[fontsize=\footnotesize]{tcl}{files/ex3_2.tcl}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{files/3.png}
     \caption{Για χρόνο 1.2sec η σύνδεση διακόπτεται στη ζεύξη 1-2.}
@@ -76,11 +76,13 @@
 
 Προκειμένου να διορθώσουμε το παραπάνω πρόβλημα, αλλάζουμε τη σύνδεση σε
 δυναμική με την ακόλουθη εντολή:
-\$ns rtproto DV
+\begin{minted}[fontsize=\footnotesize]{tcl}
+    $ns rtproto DV
+\end{minted}
 
 Παρατηρούμε ορισμένες αλλαγές σε σχέση με πριν. Αρχικά, εξετάζεται με
 δοκιμαστικά πακέτα η συνδεσιμότητα των γραμμών:
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{files/4.png}
 \end{figure}
@@ -88,7 +90,7 @@
 Μετά τη διακοπή της σύνδεσης 1-2 επιλέγεται εναλλακτική διαδρομή, όταν
 παρατηρείται η πρώτη απώλεια πακέτων:
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{files/5.png}
 \end{figure}
@@ -97,7 +99,7 @@
 από αυτή. Ασφαλώς υπάρχει και ένας χρόνος που μεσολαβεί κατά τον οποίο και οι
 δύο διαδρομές έχουν πακέτα.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{files/6.png}
 \end{figure}
@@ -163,7 +165,7 @@
 1-2 επιλέγεται διαφορετική πορεία από πριν. Καθώς  αυτή τη φορά
 συνοπολογίζουμε και το διαφορετικό κόστος κάθε ζεύξης 5-0-3-7.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{files/8.png}
 \end{figure}
@@ -203,31 +205,29 @@
 \subsection{CBR}
 \inputminted[fontsize=\footnotesize]{tcl}{files/ex3_4a1.tcl}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{files/graph1.png}
+    \includegraphics[width=0.7\textwidth]{files/graph1.png}
 \end{figure}
 
 \subsection{Exponential}
 \inputminted[fontsize=\footnotesize]{tcl}{files/ex3_4a2.tcl}
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{files/graph2.png}
+    \includegraphics[width=0.7\textwidth]{files/graph2.png}
 \end{figure}
 
 \begin{itemize}
-\item Ποιός είναι ο μέγιστος αριθμός μετάδοσης που επιτυχγάνεται για τις δύο
-περιπτώσεις κίνησης, με βάση τις γραφικές παραστάσεις που σχεδιάσατε;
-Ο μέγιστος ρυθμός μετάδοσης είναι και για τις δύο περιπτώσεις κίνησης 0.18.
-\item Αιτολογήστε τις τιμές που θέσατε παραπάνω για τις δύο τιμές κίνησης (cbr
-και exp);
-H παραπάνω τιμή είναι λογική αφού είναι ελαφρώς μικρότερη από το εύρος ζώνης
-της σύνδεσης (δηλ 2Mb).
+    \item Ποιός είναι ο μέγιστος αριθμός μετάδοσης που επιτυχγάνεται για τις δύο
+        περιπτώσεις κίνησης, με βάση τις γραφικές παραστάσεις που σχεδιάσατε;
+
+        Ο μέγιστος ρυθμός μετάδοσης είναι και για τις δύο περιπτώσεις κίνησης 0.18.
+    \item Αιτολογήστε τις τιμές που θέσατε παραπάνω για τις δύο τιμές κίνησης (cbr
+        και exp);
+
+        H παραπάνω τιμή είναι λογική αφού είναι ελαφρώς μικρότερη από το εύρος ζώνης
+        της σύνδεσης (δηλ 2Mb).
 \end{itemize}
-
-
-
-
 
 
 \end{document}
