@@ -12,7 +12,7 @@ $ns attach-agent $n0 $udp0
 
 set cbr0 [new Application/Traffic/CBR]
 $cbr0 set packetSize_ 1500
-$cbr0 set interval_ 0.01
+$cbr0 set interval_ 0.00119
 $cbr0 attach-agent $udp0
 
 set sink [new Agent/LossMonitor]
