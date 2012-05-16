@@ -1,5 +1,3 @@
-#!/bin/awk
-
 BEGIN {
     data_0=0;
     packets_0=0;

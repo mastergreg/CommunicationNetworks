@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (TeX Live 2011) (format=xelatex 2012.2.9)  16 MAY 2012 11:25
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (TeX Live 2011) (format=xelatex 2012.2.9)  16 MAY 2012 12:06
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -826,16 +826,29 @@ runsystem(rm cn-4.out.pyg)...executed.
 
 runsystem(rm cn-4.pyg)...executed.
 
- [2] (./cn-4.aux (./title/title.aux))
+runsystem(pygmentize -l awk -f latex -F tokenmerge         -P "verboptions= ,fo
+ntsize=\footnotesize " -o cn-4.out.pyg files/script_1.awk)...executed.
+
+ (./cn-4.out.pyg)
+runsystem(rm cn-4.out.pyg)...executed.
+
+runsystem(pygmentize -l text -f latex -F tokenmerge         -P "verboptions= ,f
+ontsize=\footnotesize " -o cn-4.out.pyg files/awk.out)...executed.
+
+ (./cn-4.out.pyg)
+runsystem(rm cn-4.out.pyg)...executed.
+
+ [2] (./cn-4.aux
+(./title/title.aux))
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 15737 strings out of 495650
- 259112 string characters out of 3187209
+ 15748 strings out of 495650
+ 259260 string characters out of 3187209
  377936 words of memory out of 3000000
- 18626 multiletter control sequences out of 15000+200000
+ 18633 multiletter control sequences out of 15000+200000
  4721 words of font info for 38 fonts, out of 3000000 for 9000
  36 hyphenation exceptions out of 8191
  44i,6n,49p,560b,417s stack positions out of 5000i,500n,10000p,200000b,50000s
