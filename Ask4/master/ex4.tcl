@@ -26,6 +26,8 @@ for {set i 0 } {$i < 4} {incr i} {
      $ns duplex-link $n($i) $n([expr ($i+1)%4]) 2Mb 50ms DropTail
 }
 
+ $ns duplex-link $n(0) $n(3) 2Mb 500ms DropTail
+ $ns duplex-link $n(3) $n(0) 2Mb 500ms DropTail
 
 $ns duplex-link-op $n(0) $n(3) orient right
 $ns duplex-link-op $n(1) $n(2) orient right
