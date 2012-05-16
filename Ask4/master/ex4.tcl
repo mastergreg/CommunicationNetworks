@@ -39,14 +39,14 @@ $ns color 0 red
 $ns color 1 green
 # Setup go-back-n sender-receiver
 set tcp0 [new Agent/TCP/Reno]
-$tcp0 set window_ 7
+$tcp0 set window_ 50
 # Disable modelling the initial SYN/SYNACK exchange
 $tcp0 set syn_ false
 
 
 
 # The initial size of the congestion window on slow-start
-$tcp0 set windowInit_ 7
+$tcp0 set windowInit_ 50
 # Set flow ID
 $tcp0 set fid_ 0
 $ns attach-agent $n(0) $tcp0
