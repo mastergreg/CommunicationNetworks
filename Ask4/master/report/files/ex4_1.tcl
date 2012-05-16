@@ -3,7 +3,6 @@ set nf [open lab4.nam w]
 
 $ns namtrace-all $nf
 
-
 set trf [open lab4.tr w]
 $ns trace-all $trf
 
@@ -11,28 +10,19 @@ for {set i 0} {$i < 4} {incr i} {
      set n($i) [$ns node]
 }
 
-
 $ns at 0.0 "$n(0) label GBN_sender"
 $ns at 0.0 "$n(1) label SW_sender"
 $ns at 0.0 "$n(3) label GBN_reciever"
 $ns at 0.0 "$n(2) label SW_sender"
 
-
-
-
-
-
 for {set i 0 } {$i < 4} {incr i} {
      $ns duplex-link $n($i) $n([expr ($i+1)%4]) 2Mb 50ms DropTail
 }
-
 
 $ns duplex-link-op $n(0) $n(3) orient right
 $ns duplex-link-op $n(1) $n(2) orient right
 $ns duplex-link-op $n(0) $n(1) orient down
 $ns duplex-link-op $n(3) $n(2) orient down
-
-
 
 # Define color index
 $ns color 0 red
@@ -42,8 +32,6 @@ set tcp0 [new Agent/TCP/Reno]
 $tcp0 set window_ 7
 # Disable modelling the initial SYN/SYNACK exchange
 $tcp0 set syn_ false
-
-
 
 # The initial size of the congestion window on slow-start
 $tcp0 set windowInit_ 7
@@ -71,7 +59,6 @@ $ns connect $tcp1 $sink1
 set ftp1 [new Application/FTP]
 $ftp1 attach-agent $tcp1
 
-
 proc finish {} {
     global ns nf trf
     $ns flush-trace
@@ -79,10 +66,6 @@ proc finish {} {
     close $trf
     exit 0
 }
-
-
-
-
 
 $ns at 0.5 "$ftp0 produce 50"
 $ns at 0.5 "$ftp1 produce 50"

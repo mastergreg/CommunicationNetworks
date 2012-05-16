@@ -47,9 +47,15 @@
    $tcp0 set window_ 50
    $tcp0 set windowInit_ 50
    \end{minted}
-   Αυτή τη φορά ο χρόνος μετάδοσης είναι 0.26sec (oloasdf
-
+   Αυτή τη φορά ο χρόνος μετάδοσης είναι 0.26sec (0.76-0.5)
+   \item Εκτελώντας ακόμη μία φορά την προσομοίωση με καθυστέρηση 500ms στη
+       ζεύξη 0-3 παρατηρούμε πως η μετάδοση ολοκληρώνεται τη στιγμή 1.2sec.
 \end{itemize}
+
+\section*{Ανάλυση αποτεέσμάτων με τη βοήθεια αρχείου ίχνους}
+
+
+\inputminted[fontsize=\footnotesize]{awk}{files/script_1.awk}
 
 \end{document}
 
