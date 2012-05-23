@@ -21,8 +21,8 @@ $tcp0 set syn_ false
 $tcp0 set packetSize 1500
 $ns attach-agent $n(0) $tcp0
 
-$set sink0 [new Agent/TCPSink]
-$ns attach-agent $n(1) sink0
+set sink0 [new Agent/TCPSink]
+$ns attach-agent $n(1) $sink0
 $ns connect $tcp0 $sink0
 
 set ftp0 [new Application/FTP]

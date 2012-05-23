@@ -1,0 +1,52 @@
+%{{{ preamble
+\documentclass[a4paper,9pt]{article}
+\usepackage{anysize}
+\marginsize{2cm}{2cm}{1cm}{1cm}
+%\textwidth 6.0in \textheight = 664pt
+\usepackage{xltxtra}
+\usepackage{xunicode}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{xgreek}
+\usepackage{fancyvrb}
+\usepackage{minted}
+\usepackage{listings}
+\usepackage{enumitem} 
+\usepackage{framed} 
+\usepackage{relsize}
+\usepackage{float} 
+\usepackage{pstricks}
+\usepackage{pst-node}
+\usepackage{pst-blur}
+\setmainfont[Mapping=tex-text]{FreeSerif}
+%}}}
+\begin{document}
+
+\def\thesection {\Roman{section}.}
+
+\include{title/title}
+
+\section*{Yπολογισμός των πακέτων και της ποσότητας των δεδομένων που
+ελήφθησαν}
+
+Χρησιμοποιήσαμε τον κώδικα που μας δίνεται από την εκφώνηση:
+
+\inputminted[fontsize=\footnotesize,linenos,frame=leftline]{tcl}{files/ex5_1.tcl}
+
+Καθώς και το awk script:
+
+\inputminted[fontsize=\footnotesize,linenos,frame=leftline]{awk}{files/script_1.awk}
+
+Και πήραμε την ακόλουθη έξοδο:
+
+\inputminted[fontsize=\footnotesize,linenos,frame=leftline]{text}{files/script_1.awk}
+
+\section*{Μελέτη της απόδοσης τησ Selective Repeat}
+
+\subsection*{Ερωτήσεις}
+\begin{enumerate}
+    \item $\eta=min\left \frac{W\timesTRANSP}{S},1\right$
+\end{enumerate}
+
+\end{document}
+

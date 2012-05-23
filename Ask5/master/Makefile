@@ -8,7 +8,7 @@ $(NAM):	$(TCL)
 	ns $<
 
 nam:	$(NAM)
-	nam $(NAM)
+	nam $(NAM) &
 
 awk:
 	awk -f script_1.awk < $(TRACE) > awk.out
