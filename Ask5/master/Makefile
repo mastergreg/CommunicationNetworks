@@ -13,6 +13,6 @@ nam:	$(NAM)
 awk:
 	awk -f script_1.awk < $(TRACE) > awk.out
 	cp script_1.awk report/files
-	mv awk.out report/files
+	#mv awk.out report/files
 
 
