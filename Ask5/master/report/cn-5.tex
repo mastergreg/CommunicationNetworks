@@ -23,6 +23,7 @@
 \begin{document}
 
 \def\thesection {\Roman{section}.}
+\def\thesubsection {\Roman{subsection}.}
 
 \include{title/title}
 
@@ -39,14 +40,126 @@
 
 Και πήραμε την ακόλουθη έξοδο:
 
-\inputminted[fontsize=\footnotesize,linenos,frame=leftline]{text}{files/script_1.awk}
+\inputminted[fontsize=\footnotesize,linenos,frame=leftline]{text}{files/awk.out}
 
-\section*{Μελέτη της απόδοσης τησ Selective Repeat}
+\section*{Μελέτη της απόδοσης της Selective Repeat}
 
-\subsection*{Ερωτήσεις}
-\begin{enumerate}
-    \item $\eta=min\left \frac{W\timesTRANSP}{S},1\right$
-\end{enumerate}
+\subsection{}
+Για το θεωρητικό υπολογισμό χρησιμοποιούμε την εξίσωση:
+\[\eta=min\left\{ \frac{W \times TRANSP}{S},1\right\} \]
+\begin{itemize}
+    \item $S = TRASP + 2 \times PROP + TRANSA$
+    \item $TRANSP$ χρόνος μετάδοσης του πακέτου, (μήκος)/(ρυθμός μετάδοσης)
+    \item $TRANSA$ χρόνος μετάδοσης της επαλήθευσης
+    \item $PROP$ καθυστέρηση διάδοσης του πακέτου
+    \item $W$ μήκος παραθύρου
+\end{itemize}
+
+
+\begin{itemize}
+    \item $TRANSP = \frac{1500 \times 8}{10^7} = 1.2 \times ms$
+    \item $TRANSA = \frac{40 \times 8}{10^7} = 32 \times \mu s$
+    \item $W=4$
+    \item $PROP = 5 ms$
+    \item $S = (1.2 + 10 + 0.032) \times 10^{-3} = 11.232 ms$
+\end{itemize}
+
+Συνεπώς η θεωρητική τιμή της απόδοσης υπολογίζεται:
+\[\eta=min\left\{ \frac{4 \times 1.2}{11.232},1\right\} = 0.4274\]
+
+Από την εκτέλεση του awk script υπολογίζουμε καθαρό ρυθμό μετάδοσης $\frac{1644680
+\times 8}{3} = 4.386Mbps $
+
+\[\eta=\frac{4.386 \times 10^6}{10^7} = 0.4386 \]
+
+Η πραγματική απόδοση είναι πολύ κοντά στην θεωρητική απόδοση.
+
+\subsection{}
+Κατά την προσομοίωση στάλθηκαν 1644680 bytes σε 1068 πακέτα. Αυτά
+αποστέλλονται σε χρόνο 3s έτσι υπολογίζουμε το ρυθμό μετάδοσης:
+\[\frac{1644680 \times 8}{3} = 4.386Mbps \]
+
+Και χρησιμοποιήση καναλιού:
+\[\eta=\frac{4.386 \times 10^6}{10^7} = 0.4386 \]
+
+\subsection{}
+Συνυπολογίζοντας στο μέγεθος των πακέτων το μήκος των επικεφαλίδων TCP και IP
+έχουμε καλύτερη προσέγγιση καθώς αυτές προσμετρώνται στο συνολικό μέγεθος που
+θα μεταδοθούν πάνω στη ζεύξη.
+
+\begin{itemize}
+    \item $TRANSP = \frac{1540 \times 8}{10^7} = 1.232 \times ms$
+    \item $TRANSA = \frac{40 \times 8}{10^7} = 32 \times \mu s$
+    \item $W=4$
+    \item $PROP = 5 ms$
+    \item $S = (1.232 + 10 + 0.032) \times 10^{-3} = 11.264 ms$
+\end{itemize}
+
+\[\eta=min\left\{ \frac{4 \times 1.232}{11.264},1\right\} = 0.4375\]
+
+\subsection{}
+Για να μεγιστοποιηθεί η απόδοση θα πρέπει $\eta=1$. 
+
+\begin{itemize}
+    \item $TRANSP = \frac{L \times 8}{10^7} = L \times 8 \times 10^{-7} s$
+    \item $S = L\times8\times10^{-7}+ 10^{-2} + 0.032 \times 10^{-3} =
+        L\times8\times10^{-7}+10.032\times10^{-3} s$
+\end{itemize}
+
+
+\[\eta=\frac{4 \times
+L\times8\times10^{-7}}{L\times8\times10^{-7}+10.032\times10^{-3} } = 1\]
+
+\[ \Rightarrow L = \frac{10.32\times10^4}{3\times8} = 4300bytes\]
+
+Συνεπώς καθαρό μέγεθος πακέτου χωρίς τις επικεφαλίδες είναι
+$4300-40=4260bytes$.
+
+Τρέχοντας πάλι την προσομοίωση με το νέο μέγεθος πακέτου έχουμε έξοδο:
+
+\inputminted[fontsize=\footnotesize,linenos,frame=leftline]{text}{files/awk_2.out}
+
+\[\eta=\frac{\frac{3753860 \times 8}{3}}{10^7} \approx 1 \]
+
+\subsection{}
+Αυτή τη φορά θα έχουμε σταθερό μέγεθος πακέτου αλλά δεκαπλάσιο ρυθμό
+μετάδοσης.
+
+\begin{itemize}
+    \item $TRANSP = \frac{1540 \times 8}{10^8} = 1.232 10^{-4} s$
+    \item $TRANSA = \frac{40 \times 8}{10^7} = 3.2 \mu s$
+    \item $PROP = 5 ms$
+    \item $S = (1.232 + 100 + 0.032) \times 10^{-4} = 101.264 ms$
+\end{itemize}
+
+\[\eta=\frac{W \times 1.232}{101.264} = 1 \Rightarrow W = 82\]
+
+Από την έξοδο του awk script:
+\inputminted[fontsize=\footnotesize,linenos,frame=leftline]{text}{files/awk_3.out}
+\[\eta=\frac{\frac{32808120 \times 8}{3}}{100Mbps} \approx 0.874\]
+
+Για μήκος παραθύρου 82 ο αριθμός ακολουθίας είναι 163. Κατά συνέπεια
+χρειαζόμαστε 8 bits για την αναπαράσταση.
+
+\subsection{}
+Για μέγεθος παραθύρου 82, καθυστέρηση γραμμής 50ms, μήκος πακέτου 1500bytes,
+και ρυθμό μετάδοσης 100Mbps απο την προσομοίωση έχουμε τα εξής:
+\inputminted[fontsize=\footnotesize,linenos,frame=leftline]{text}{files/awk_4.out}
+
+\[\eta=\frac{\frac{1764800 \times 8}{3}}{100Mbps} \approx 0.047\]
+
+\subsection{}
+Με χρήση του προτοκόλου Go Back N 
+\begin{minted}{tcl}
+set tcp0 [new Agent/TCP/Reno]
+\end{minted}
+παίρνουμε την παρακάτω έξοδο:
+\inputminted[fontsize=\footnotesize,linenos,frame=leftline]{text}{files/awk_5.out}
+
+\[\eta=\frac{\frac{1644680 \times 8}{3} \times 10^6}{10^7} = 0.4386 \]
+
+Η απόδοση και των δύο προτοκόλλων είναι ίδια καθώς δεν έχουμε απώλειες πακέτων
+κατά τη μεταφορά.
 
 \end{document}
 
